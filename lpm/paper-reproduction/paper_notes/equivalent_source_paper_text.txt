@@ -1,0 +1,312 @@
+=== Page 1 ===
+Local phase method for designing and 
+optimizing metasurface devices
+LIYI HSU,1 MATTHIEU DUPRÉ,1 ABDOULAYE NDAO,1 JULIUS YELLOWHAIR,2
+AND BOUBACAR KANTÉ1,*
+1Department of Electrical and Computer Engineering, University of California San Diego, La Jolla, 
+California 92093-0407, USA
+2Sandia National Laboratories, 1515 Eubank SE, Albuquerque, New Mexico 87123, USA
+*bkante@ucsd.edu
+Abstract: Metasurfaces have attracted significant attention due to their novel designs for flat 
+optics. However, the approach usually used to engineer metasurfa ce devices assumes that 
+neighboring elements are identical, by extracting the phase information from simulations with 
+periodic boundaries, or that near-field coupling between partic les is negligible, by extracting 
+the phase from single particle simulations. This is not the cas e  m o s t  o f  t h e  t i m e  a n d  t h e  
+approach thus prevents the optimization of devices that operate  a w a y  f r o m  t h e i r  o p t i m u m .  
+Here, we propose a versatile numerical method to obtain the phase of each element within the
+metasurface (meta-atoms) while a ccounting for near-field coupli ng. Quantifying the phase 
+error of each element of the metasurfaces with the proposed loc al phase method paves the 
+way to the design of highly efficient metasurface devices inclu ding, but not limited to, 
+deflectors, high numerical aperture metasurface concentrators, lenses, cloaks, and modulators.
+© 2017 Optical Society of America
+OCIS codes: (160.3918) Metamaterials; (240.0310) Thin films; (220.1770) Con centrators; (000.4430) Numerical 
+approximation and analysis.
+References and links
+1. N. Yu, F. Aieta, P. Genevet, M. A. Kats, Z. Gaburro, and F. Capasso, “A broadband, background-free quarter-
+wave plate based on plasmonic metasurfaces,” Nano Lett. 12(12), 6328–6333 (2012).
+2. Y. Zhao and A. Alù, “Manipulating light polarization with ultrathin plasmonic metasurfaces,” Phys. Rev. B 84,
+205428 (2011).
+3. P. Genevet, F. Capasso, F. Aieta, M. Khorasaninejad, and R. Devlin, “Recent advances in planar optics: from 
+plasmonic to dielectric metasurfaces,” Optica 4(1), 139–152 (2017).
+4. A. Arbabi, Y. Horie, M. Bagheri, and A. Faraon, “Dielectric metasurfaces for complete control of phase and 
+polarization with subwavelength spatial resolution and high transmission,” Nat. Nanotechnol. 10(11), 937–943
+(2015).
+5. F. Aieta, M. A. Kats, P. Genevet, and F. Capasso, “Multiwavelength achromatic metasurfaces by dispersive 
+phase compensation,” Science 347(6228), 1342–1345 (2015).
+6. P. Lalanne and P. Chavel, “Metalenses at visible wavelengths: past, present, perspectives,” Laser Photonics Rev.
+11, 1600295 (2017).
+7. Z. Wang, K. Yao, M. Chen, H. Chen, and Y. Liu, “Manipulating Smith-Purcell Emission with Babinet 
+Metasurfaces,” Phys. Rev. Lett. 117(15), 157401 (2016).
+8. J. He, Z. Xie, S. Wang, X. Wang, Q. Kan, and Y. Zhang, “Terahertz polarization modulator based on 
+metasurface,” J. Opt. 17, 105107 (2015).
+9. E. Maguid, I. Yulevich, M. Yannai, V. Kleiner, M. L. Brongersma, and E. Hasman, “Multifunctional interleaved 
+geometric-phase dielectric metasurfaces,” Light Sci. Appl. 6, e17027 (2017).
+10. L. Y. Hsu, T. Lepetit, and B.Kanté, “Extremely thin dielectric metasurface for carpet cloaking,” Prog. 
+Electromagnetics Res. 152, 33–40 (2015).
+11. X. Ni, Z. J. Wong, M. Mrejen, Y. Wang, and X. Zhang, “An ultrathin invisibility skin cloak for visible light,” 
+Science 349(6254), 1310–1314 (2015).
+12. L. Hsu, M. Dupré, A. Ndao, and B.Kanté, “From parabolic-trough to metasurface-concentrator: assessing 
+focusing in the wave-optics limit,” Opt. Lett. 42(8), 1520–1523 (2017).
+13. C. Simovski, D. Morits, P. Voroshilov, M. Guzhva, P. Belov, and Y. Kivshar, “Enhanced efficiency of light-
+trapping nanoantenna arrays for thin-film solar cells,” Opt. Express 21(Suppl 4), A714–A725 (2013).
+14. R. Schmidt, A. Slobozhanyuk, P. Belov, and A. Webb, “Flexible and compact hybrid metasurfaces for enhanced 
+ultra high field in vivo magnetic resonance imaging,” Sci. Rep. 7(1), 1678 (2017).
+                                                                                                  Vol. 25, No. 21 | 16 Oct 2017 | OPTICS EXPRESS 24974 
+#305171 
+https://doi.org/10.1364/OE.25.024974 
+Journal © 2017
+Received 18 Aug 2017; revised 26 Sep 2017; accepted 26 Sep 2017; published 2 Oct 2017 
+Corrected: 12 October 2017
+
+
+=== Page 2 ===
+15. J.-H. Park, A. Kodigala, A. Ndao, and B. Kanté, “Hybridized metamaterial platform for nano-scale sensing,” 
+Opt. Express 25(13), 15590–15598 (2017).
+16. S. Zhan, Y. Peng, Z. He, B. Li, Z. Chen, H. Xu, and H. Li, “Tunable nanoplasmonic sensor based on the 
+asymmetric degree of Fano resonance in MDM waveguide,” Sci. Rep. 6(1), 22428 (2016).
+17. L. Huang, X. Chen, H. Mühlenbernd, H.Z h a n g ,S .C h e n ,B .B a i ,Q .T a n ,G .J in, K.-W. Cheah, C.-W. i Qiu, J.
+Li, T. Zentgraf, and S. Zhang, “Three-dimensional optical holography using a plasmonic metasurface,” Nat. 
+Commun. 4, 2808 (2013).
+18. N. Yu, P. Genevet, M. A. Kats, F. Aieta, J.-P. Tetienne, F. Capasso, and Z. Gaburro, “Light propagation with 
+phase discontinuities: Generalized laws of reflection and refraction,” Science 334(6054), 333–337 (2011).
+19. C. Balanis,Antenna Theory, Analysis, and Design, 3rd ed. (Wiley, 2005).
+20. D. S. Boyuk, L.-W. Chou, and M. A. Filler, “Strong near-field coupling of plasmonic resonators embedded in Si 
+nanowires,” ACS Photonics 3, 184–189 (2016).
+21. A. Ndao, A. Belkhir, R. Salut, and F. I. Baida, “Slanted annular aperture arrays as enhanced-transmission 
+metamaterials: Excitation of the plasmonic transverse electromagnetic guided mode,” Appl. Phys. Lett. 103,
+211901 (2013).
+22. J. C. Lagarias, J. A. Reeds, M. H. Wright, and P. E. Wright, “Convergence properties of the Nelder-Mead 
+simplex method in low dimensions,” SIAM J. Optim. 9(1), 112–147 (1998).
+23. M. Khorasaninejad, A. Y. Zhu, C. Roques-Carmes, W. T. Chen, J. Oh, I. Mishra, R. C. Devlin, and F. Capasso,
+“Polarization-insensitive metalenses at visible wavelengths,” Nano Lett. 16(11), 7229–7234 (2016).
+24. T. Lepetit and B. Kanté, “Cramér-Rao bounds for determination of electric and magnetic susceptibilities in 
+metasurfaces,” Opt. Express 23(3), 3460–3471 (2015).
+1. Introduction
+Optical metasurfaces are artific ial planar structures, composed  of dielectric or plasmonic 
+nano-resonators [1–3]. Metasurfaces offer a wide control over the reflection and refraction by 
+tuning the amplitude, the phase, and the polarization states of  light incident on a surface [4]. 
+In addition to having strong potentials in applied research such as optical components (lenses, 
+optical wave-plates, modulators, etc.) [5–9] cloaking devices [ 10,11], solar applications 
+[12,13], biomedical imaging [14], sensing [15,16], hologram [17 ], metasurfaces are of great 
+scientific interest to explore fundamental questions in optics and wave physics in complex 
+environments. In general, there are two primary methods to desi gn efficient metasurfaces. 
+Both methods involve the engineering of the phase and amplitude  information. The first 
+approach is the single meta-atom method [18] and it consists in calculating the reflection or 
+transmission phase of a single particle by assuming that near-f ield coupling between particles 
+is negligible. The second method is a widely used approach that  we term the unit cell method 
+(UCM). In this approach, unit cell boundary conditions are used  and the phase is thus 
+obtained with identical neighbors. This method is only accurate  if coupling differences 
+between identical and different neighbors are negligible, which  we called near-field coupling 
+difference throughout the paper. However, in physical metasurfa ce devices, the elements are 
+not single particles or identical particles and devices constructed using these methods are thus 
+not optimized. To the best of our knowledge, no numerical appro ach has been reported in the 
+literature to address this problem. Here, we propose a method, that we term the local phase 
+method (LPM). The LPM accounts for near-field coupling between adjacent neighbors. It is a 
+powerful and versatile tool to quantify the phase error and amp litude of each element of the 
+metasurface. These quantifications can be used to design high e fficiency metasurface devices 
+for various applications. The paper briefly presents the LPM and illustrates its capabilities and 
+advantages for various applications such as deflectors (for dif ferent designs) and high 
+numerical aperture concentrators. Furthermore, we compare the L PM to the UCM with the 
+same examples.
+2. Local phase method
+For applications based on metasurfaces without strong near-fiel d coupling, the unit cell 
+method is sufficient. However, when strong near-field coupling is present, the unit cell 
+method limits the performance of devices. To address these limi tations, we propose the LPM 
+that takes into account near-field coupling differences and qua ntifies the phase of meta-atoms 
+                                                                                                  Vol. 25, No. 21 | 16 Oct 2017 | OPTICS EXPRESS 24975 
+
+=== Page 3 ===
+in presence of non-identical neighbors. This quantification bas ed on the LPM allows an 
+efficient optimization of metasurfaces for a given application.
+W e  f i r s t  c o n s i d e r  t h e  s t a n d a r d  U C M  f o r  a  m e t a s u r f a c e  d e f l e c t o r  t h a t  r e l i e s  o n  t h e  
+simulation and analysis of individual elements in a periodic ar ray. The metasurface elements 
+provide a linear phase shift as a function of their position wi th a constant phase difference of 
+40° between adjacent elements, which correspond to 9 (360° / 40 °) elements. Figure 1(a)
+depicts the super-cell illuminated by a plane wave incident at an angle (10°) on the 
+metasurface and polarized along t he Y direction. The incident f ield interacts with the TiO 2
+dielectric resonator (in brown), and is reflected by a metallic  ground plane modelled as a 
+perfect electric conductor (PEC) in grey. The light blue color represents the SiO2 spacer. The 
+boundary conditions in other directions (x and y) are set to periodic boundary conditions.
+To obtain the phase of each element, we start by computing the field of the whole 
+structure using the co mmercial software CST. From this total fi eld (E , H), we obtain the 
+equivalent sources ( Js, Ms) of each element (blue boxes in Fig. 1(a)) using the equivalence 
+principle [19]. According to the  equivalence principle, the fie l d  o u t s i d e  a  v i r t u a l  c l o s e d  
+surface can be obtained by suita ble electric- and magnetic-current densities over the closed 
+surface. The equivalent current densities are given by the following equations:
+ usJn H (1)
+  usMn E (2)
+where n is the unit vector orthogonal to the surface and directed outwa rd. In CST, it can be 
+achieved with the Field Source Monitor. As a result, the near-f ield coupling effect is included 
+in this solution. Finally, we export the equivalent source into  a new simulation file and add a 
+probe to record its phase. Figure 1(b) presents the schematic of  the new simulation. The 
+distance between the probe and the new equivalent source is 2 ȝPDQGLWLVODUJHHQRXJKWR
+be considered as far field for a wavelength of 800nm. Besides, the boundary conditions in x 
+and y directions [Fig. 1(b)] are set to periodic boundary conditions. The boundary conditions 
+in ± z direction are set to open. Using this method, the field r adiated by the previous 
+neighbors is not taken into account, and the phase shift produc ed by the considered element 
+can be measured. Therefore, we refer to it as the Local Phase Method (LPM).
+Fig. 1. The schematic of the local phase method (LPM). The deflector super-cell is made of 9 
+different elements. (a) Super-cell illuminated by a plane wave coming from the left (top z 
+plane) that interacts with the TiO 2 dielectric resonator (in brown) with a refractive index of 
+2.52 and is reflected by a metallic ground plane (grey-bold). T he green-blue color represents 
+the SiO 2 spacer. (b) Schematic of the new field source. The green rhombu s represents the 
+probe.
+3. Deflector
+To compare the UCM and the LPM, we use metasurface deflectors as a first example. A plane 
+wave comes from the top z plane with a 10° incident angle. We d esign deflectors based on 
+three types of elements. The first is a simple rectangular elem ent based reflector [Fig. 2(a)]
+with weak coupling between its elements. The second deflector i s made of rectangular 
+elements embedded in a low refractive index material, SiO 2 [Fig. 2(b)] with n SiO2 = 1.45. In 
+this configuration, the smaller refractive index contrast decreases the field confinement inside 
+                                                                                                  Vol. 25, No. 21 | 16 Oct 2017 | OPTICS EXPRESS 24976 
+
+=== Page 4 ===
+the TiO2 particles and the coupling between particles increases [20]. The third design consists 
+in tilted parallelepiped elements with a tilted angle of 20° fr om the normal [Fig. 2(c)] [21]. 
+The blue-green color in Figs. 2(a)-2(c) represents the low refra ctive index material (SiO 2). 
+The brown color represents the TiO 2 material with a refractive index of 2.52 and the grey-
+bold represents the metallic ground plane. We chose to work in the visible spectrum at 800 
+nm to illustrate the LPM. Figures 2(d)-2(f) presents the phase s hift obtained in simulation 
+with the UCM. In all cases, we take the phase provided by the l ongest length (L) as phase 
+reference. The other dimensions are listed as insets. The theor etical deflection angles for the 
+three cases are respectively 0. 5°, 1.3° and 0.5°, given by 1 0 ǻĭsin sin 2
+ri
+p
+OTT S
+ §·  ¨¸©¹
+ZLWKș i = 10°, 
+ǻĭ DQGȜ0 = 800 nm.
+Fig. 2. Dimensions of (a) the r ectangular elements. (b) the rec tangular elements with covered 
+layer. (c) the parallelepiped eleme nts. Phase-shift obtained wi t h  t h e  U C M  w i t h  ( d )  t h e
+rectangular elements, (e) the rectangular elements with covered  layer and (f) the parallelepiped 
+elements.
+We first start with the rectangular elements design and compare  it with the standard UCM 
+design. The initial elements lengths of the optimized deflector  are chosen with the UCM. The 
+corresponding required lengths are shown in blue in Fig. 3(a). The radiated energy in the far-
+field, or equivalently the radar cross section (RCS), is given by the blue curve in Fig. 3(b). 
+The RCS exhibits a maximum value RIȜ2 at 0°. Subsequently, we use the LPM to obtain 
+the real phase of the elements. Then, we tune the length of each element to optimize the phase 
+difference between adjacent elements to be 40°. To do so, we us e a derivative free approach 
+based on the Matlab fminsearch algorithm which is well suited t o optimize discontinuous 
+functions, and we constrain the lengths to be between 100 and 540 nm [22]. The cost function 
+to minimize is given by the sum of the square difference of the  phases: 
+2
+ĳmm '¦ where 
+ĳm' is the phase error of the mth element, in other words, the phase difference between the 
+target and the considered method (LPM and UCM).
+                                                                                                  Vol. 25, No. 21 | 16 Oct 2017 | OPTICS EXPRESS 24977 
+
+=== Page 5 ===
+The green circles in Fig. 3(a) correspond to the optimized dimen sions by LPM. These 
+optimized dimensions are used to provide the RCS plotted in Fig . 3(b). The RCS has been 
+LQFUHDVHGWRȜ 2, corresponding to an enhancement of 7%. Figure 3(c) represents the 
+comparison between the phase dif ference obtained from the LPM and the UCM. Figure 3(d)
+presents the absolute value of the phase for both methods with the UCM in blue and the LPM 
+in green. The maximum phase error is about 40° for the UCM and is decreased to 20° for the 
+L P M .  T h e  f i n a l  R C S  h a s  n o t  i n c r e a s e d  a  l o t  a s  t h e  n e a r - f i e l d  c oupling difference of 
+rectangular elements is initially minor.
+Fig. 3. Designing metasurfaces with rectangular elements. (a) D imensions for the UCM and 
+LPM metasurface elements. (b) Radar cross-section of the UCM an d LPM metasurfaces. (c) 
+Phase difference between two adjacent elements for two metasurf aces. (d) Phase error for the 
+UCM and LPM metasurfaces.
+To further investigate our method, we now consider a new design  with strong near-field 
+coupling as is the case for rect angle elements embedded in a Si O2 layer shown in Fig. 2(b). 
+Figure 4(a) presents the lengths obtained with the UCM (blue) an d LPM (green). Unlike the 
+first situation, the dimensions of the LPM are quite different from the ones of the UCM. This 
+is due to the strong near-field coupling effect. Figure 4(b) shows the RCS obtained with the 
+two methods. We observe that the RCS exhibits two low peaks at ZLWKDYDOXHRIȜ 2
+DQGDWZLWKDYDOXHRIȜ 2. It is worth noting that the period, in this case, is a little larger 
+than in the previous case [Fig. 2(a)] and that the theoretical deflection angle is 1.3°. By using 
+the same approach as in the case  of the rectangle elements, the RCS for the LPM increases to 
+Ȝ2, i.e. more than a 124% enhancement compared to the UCM design.  We also note that 
+the maximum phase error (given by the phase obtained with the m ethod minus the required 
+theoretical phase) for the LPM is only about 30° while the maxi mum phase error of the UCM 
+is more than 100°.
+                                                                                                  Vol. 25, No. 21 | 16 Oct 2017 | OPTICS EXPRESS 24978 
+
+=== Page 6 ===
+Fig. 4. Designing metasurfaces with rectangular elements embedd ed in a SiO 2 layer. (a) 
+Dimensions for the UCM and LPM metasurface elements. (b) Radar cross-section of the UCM 
+and LPM metasurfaces. (c) Phase difference between two adjacent elements for two 
+metasurfaces. (d) Phase error for the UCM and LPM metasurfaces.
+The third design consists of slanted parallelepiped elements wi th a tilted angle of 20° as 
+shown in Fig. 2(e). The concept figure is presented in Fig. 1(c) and the results are presented in 
+Fig. 5. Unlike the rectangular ones [Fig. 3], the RCS at 0° is a s small as 85 Ȝ
+2. Moreover, 
+there is another beam at 10° which corresponds to specular reflection. On the other hand, the 
+R C S  f o r  t h e  L P M  i s  s h o w n  i n  F i g .  5 ( b )DQGWKH5&6DWGUDVWLFDOO\LQFUHDVHVWRȜ 2, 
+corresponding to an enhancement of 111%, and the secondary lobes are now negligible. 
+Similarly, Figs. 5(c)-5(d) present the comparison of the phase d ifference between the two 
+methods (UCM and LPM). As we can see, the LPM provides a phase much closer to the 
+target. These results clearly show that, even if the near-field  coupling difference is small, the 
+LPM improves the efficiency of the metasurface devices. More im portantly, when the near-
+field coupling difference becomes strong, our LPM significantly improves the results.
+Fig. 5. Designing metasurfaces with slanted parallelepiped elem ents. (a) Dimensions for the 
+UCM and LPM metasurface elements. (b) Radar cross-section of th e UCM and LPM 
+metasurfaces. (c) Phase difference between two adjacent element s for two metasurfaces. (d) 
+Phase error for the UCM and LPM metasurfaces.
+                                                                                                  Vol. 25, No. 21 | 16 Oct 2017 | OPTICS EXPRESS 24979 
+
+=== Page 7 ===
+4. High Numerical Aperture Concentrator
+We now investigate a second class of devices by implementing a high numerical aperture 
+concentrator where the advantage of the LPM over the usual UCM becomes evident. Figure 
+6(a) shows the unit cell dimensions (length) used to design the concentrator. The height is 
+large enough to provide waveguide modes to the elements [23]. Figure 6(b) presents the 
+phase shift obtained with the UCM. Again, we take the phase obt a i n e d  w i t h  t h e  l a r g e s t  
+dimension as the phase reference. The red curve in Fig. 6(c) repr esents the required 
+theoretical phase (target) for the concentrator. We can observe that the first 8 elements have a 
+smooth phase variation and the average of the absolute value of the phase difference between 
+UCMDQGWKHWDUJHWLV+RZHYHUZKHQWKHVORSHRUWKHGHULYDWLYHRIĳ[JHWVVWHHSHURU
+discontinuous, the imposed phase shift is very different from t he targeted one. About half of 
+the elements are almost 150° away from their targets. This is a  consequence of the fact that 
+the dimensions of the elements calculated by the UCM are extrem ely different from their 
+neighbors and the coupling difference cannot be neglected anymore [Fig. 6(c)]. Figure 7(a)
+shows the real part of the reflected electric field. We can obse rve that the field is reflected 
+towards the focal spot merely by the first eight elements. Figu r e  7 ( a ) s t i l l  s h o w s  a  l a r g e  
+discontinuity of the wave front around the 10th element because  of its large phase error. On 
+the other hand, in the LPM design, we optimize the dimensions o f the elements from number 
+eight to the end to obtain the desired phases. Overall, the pha ses obtained with our LPM 
+optimization (in green in Fig. 6(c)) are much closer to their t argets (in red) than with the 
+UCM (in blue), except for some elements. This is due to the cho ice of our cost function 
+2
+ĳmm '¦ which optimize the sum of the square difference and not all ind ividual phase 
+differences. For instance, to min imize the large error at eleme nt 18, we sacrifice a bit of the 
+phase error at element 19. Interestingly, this may also indicat e that the near-field coupling 
+may impose some limits on the optimization approach and that it  is not always possible to 
+find a length distribution that fits exactly the theoretical ph ase profile of a perfect 
+concentrator [24]. This may also be attributed to our optimizat ion algorithm that is known to 
+converge towards local maxima for high dimensional problems [22 ]. However, the 
+optimization is still very effici ent. Figure 8 presents the total power density produced by the 
+metasurface concentrator with the UCM [Fig. 8(a)] and with the optimization based on the 
+LPM [Fig. 8(b)]. We can see that the energy at the focal spot i s increased by 15%, with a 
+larger longitudinal length for a slightly reduced width.
+Fig. 6. (a) The schematic of the concentrator. (b) Dimensions for unit cell method and LPM (c) 
+Phase difference between two adjacent elements for the two meth ods. (d) Phase error for the 
+two methods.
+                                                                                                  Vol. 25, No. 21 | 16 Oct 2017 | OPTICS EXPRESS 24980 
+
+=== Page 8 ===
+Fig. 7. Real part of the reflected electric field for (a) the U CM, and (b) for the LPM. The black 
+rectangular boxes represent the index position of the first 11 elements (from 0 to 10)
+Fig. 8. Total power density plot for (a) the UCM, and (b) for t he LPM. The LPM increase the 
+power at the spot.
+5. Conclusion
+In summary, we have proposed the local phase method, a versatil e approach to quantify the 
+phase error of each element within a metasurface accounting for  the near-field coupling. The 
+method improves the performance of devices based on metasurfaces . We have investigated 
+two different applications, namely deflectors and high numerica l aperture concentrators, to 
+illustrate the impact of the LPM on the efficiency of metasurfa ce devices. Even for devices 
+with small near-field coupling, for which the UCM performs quit e well, quantifying the local 
+phase can improve the efficiency. In more advanced devices were  near-field coupling is more 
+important, optimizing the phase error using our LPM drastically  improves the radar cross-
+section. The simplicity and the versatility of the LPM will lea d to the design of highly-
+efficient metasurfaces and compl ex electromagnetic devices that  rely on the discretization of 
+theoretical profiles such as in transformation optics.
+                                                                                                  Vol. 25, No. 21 | 16 Oct 2017 | OPTICS EXPRESS 24981 
+
+=== Page 9 ===
+Funding
+This material is based upon work supported by the U.S. Departme nt of Energy under Award 
+Number DE-EE0007341.
+                                                                                                  Vol. 25, No. 21 | 16 Oct 2017 | OPTICS EXPRESS 24982 

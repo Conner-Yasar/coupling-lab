@@ -1,0 +1,13 @@
+{
+  "source": "Hsu et al. 2017 Local phase method",
+  "phase_step_deg": 40.0,
+  "supercell_elements": 9,
+  "neighbor_radius": 2,
+  "local_window_width": 5,
+  "ucm_definition": "periodic window repeats the center element",
+  "lpm_definition": "local window keeps non-identical neighbors from the supercell",
+  "outputs": [
+    "paper_ucm_lpm_sampling_plan.csv",
+    "paper_lpm_equivalent_source_tasks.json"
+  ]
+}

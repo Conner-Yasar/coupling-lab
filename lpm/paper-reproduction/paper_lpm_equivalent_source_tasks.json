@@ -1,0 +1,227 @@
+[
+  {
+    "method": "LPM",
+    "center_element_id": 0,
+    "target_phase_deg": 0.0,
+    "ucm_periodic_element_ids": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "local_window_element_ids": [
+      7,
+      8,
+      0,
+      1,
+      2
+    ],
+    "equivalent_sources": [
+      "Js = n x H",
+      "Ms = -n x E"
+    ],
+    "probe_distance_um": 2.0,
+    "phase_measurement": "export center closed-surface field source, then record probe phase"
+  },
+  {
+    "method": "LPM",
+    "center_element_id": 1,
+    "target_phase_deg": 40.0,
+    "ucm_periodic_element_ids": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "local_window_element_ids": [
+      8,
+      0,
+      1,
+      2,
+      3
+    ],
+    "equivalent_sources": [
+      "Js = n x H",
+      "Ms = -n x E"
+    ],
+    "probe_distance_um": 2.0,
+    "phase_measurement": "export center closed-surface field source, then record probe phase"
+  },
+  {
+    "method": "LPM",
+    "center_element_id": 2,
+    "target_phase_deg": 80.0,
+    "ucm_periodic_element_ids": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "local_window_element_ids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "equivalent_sources": [
+      "Js = n x H",
+      "Ms = -n x E"
+    ],
+    "probe_distance_um": 2.0,
+    "phase_measurement": "export center closed-surface field source, then record probe phase"
+  },
+  {
+    "method": "LPM",
+    "center_element_id": 3,
+    "target_phase_deg": 120.0,
+    "ucm_periodic_element_ids": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "local_window_element_ids": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "equivalent_sources": [
+      "Js = n x H",
+      "Ms = -n x E"
+    ],
+    "probe_distance_um": 2.0,
+    "phase_measurement": "export center closed-surface field source, then record probe phase"
+  },
+  {
+    "method": "LPM",
+    "center_element_id": 4,
+    "target_phase_deg": 160.0,
+    "ucm_periodic_element_ids": [
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "local_window_element_ids": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "equivalent_sources": [
+      "Js = n x H",
+      "Ms = -n x E"
+    ],
+    "probe_distance_um": 2.0,
+    "phase_measurement": "export center closed-surface field source, then record probe phase"
+  },
+  {
+    "method": "LPM",
+    "center_element_id": 5,
+    "target_phase_deg": 200.0,
+    "ucm_periodic_element_ids": [
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "local_window_element_ids": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "equivalent_sources": [
+      "Js = n x H",
+      "Ms = -n x E"
+    ],
+    "probe_distance_um": 2.0,
+    "phase_measurement": "export center closed-surface field source, then record probe phase"
+  },
+  {
+    "method": "LPM",
+    "center_element_id": 6,
+    "target_phase_deg": 240.0,
+    "ucm_periodic_element_ids": [
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "local_window_element_ids": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "equivalent_sources": [
+      "Js = n x H",
+      "Ms = -n x E"
+    ],
+    "probe_distance_um": 2.0,
+    "phase_measurement": "export center closed-surface field source, then record probe phase"
+  },
+  {
+    "method": "LPM",
+    "center_element_id": 7,
+    "target_phase_deg": 280.0,
+    "ucm_periodic_element_ids": [
+      7,
+      7,
+      7,
+      7,
+      7
+    ],
+    "local_window_element_ids": [
+      5,
+      6,
+      7,
+      8,
+      0
+    ],
+    "equivalent_sources": [
+      "Js = n x H",
+      "Ms = -n x E"
+    ],
+    "probe_distance_um": 2.0,
+    "phase_measurement": "export center closed-surface field source, then record probe phase"
+  },
+  {
+    "method": "LPM",
+    "center_element_id": 8,
+    "target_phase_deg": 320.0,
+    "ucm_periodic_element_ids": [
+      8,
+      8,
+      8,
+      8,
+      8
+    ],
+    "local_window_element_ids": [
+      6,
+      7,
+      8,
+      0,
+      1
+    ],
+    "equivalent_sources": [
+      "Js = n x H",
+      "Ms = -n x E"
+    ],
+    "probe_distance_um": 2.0,
+    "phase_measurement": "export center closed-surface field source, then record probe phase"
+  }
+]
